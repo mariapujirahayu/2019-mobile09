@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,15 +12,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import id.ac.polinema.recyclerviewsangatsederhana.R;
 import id.ac.polinema.recyclerviewsangatsederhana.models.SuperHero;
 
 public class SuperHeroAdapter extends RecyclerView.Adapter<SuperHeroAdapter.MyViewHolder> {
-    List<SuperHero> heroList;
+    private ArrayList<SuperHero> heroList;
 
-    public SuperHeroAdapter(List<SuperHero> heroList) {
+    public SuperHeroAdapter(ArrayList<SuperHero> heroList) {
         this.heroList = heroList;
     }
 
@@ -38,25 +40,29 @@ public class SuperHeroAdapter extends RecyclerView.Adapter<SuperHeroAdapter.MyVi
         SuperHero hero = heroList.get(position);
 
         holder.heroName.setText(hero.getHeroName());
+        holder.Gambar.setImageResource(hero.getGambar());
     }
 
     @Override
     public int getItemCount() {
-        return (heroList != null) ? heroList.size() : 0;
+        //return (heroList != null) ? heroList.size() : 0;
         /*for non shorthand people*/
         /*if(heroList!=null){
           return heroList.size();
         }else{
           return 0;
         }*/
+        return heroList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView heroName;
+        private TextView heroName;
+        private ImageView Gambar;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             heroName = itemView.findViewById(R.id.heroName);
+            Gambar = itemView.findViewById(R.id.gambar);
         }
     }
 }

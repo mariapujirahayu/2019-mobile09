@@ -24,12 +24,17 @@ public class MainActivity extends AppCompatActivity {
 
         rvSuperHero = findViewById(R.id.rvSuperHero);
 
-        SuperHero hero = new SuperHero("Petruk");
+        SuperHero hero = new SuperHero("Bangchan", R.drawable.bangchan);
         listSuperHero.add(hero);
-        hero = new SuperHero("Gareng");
+        hero = new SuperHero("Changbin", R.drawable.changbin);
         listSuperHero.add(hero);
+        hero = new SuperHero("Felix", R.drawable.felix);
+        listSuperHero.add(hero);
+        hero = new SuperHero("Han", R.drawable.han);
+        listSuperHero.add(hero);
+        
 
-        SuperHeroAdapter superHeroAdapter = new SuperHeroAdapter(listSuperHero);
+        SuperHeroAdapter superHeroAdapter = new SuperHeroAdapter((ArrayList<SuperHero>) listSuperHero);
 
         rvSuperHero.setAdapter(superHeroAdapter);
         rvSuperHero.setLayoutManager(new LinearLayoutManager(this));

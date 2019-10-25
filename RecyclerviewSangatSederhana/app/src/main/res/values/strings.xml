@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RecyclerviewSangatSederhana</string>
+    <string name="hero_name">Hero Name</string>
 </resources>
