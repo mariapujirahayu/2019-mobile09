@@ -26,17 +26,16 @@ public class MainActivity extends AppCompatActivity {
 
         SuperHero hero = new SuperHero("Bangchan", R.drawable.bangchan);
         listSuperHero.add(hero);
-        hero = new SuperHero("Changbin", R.drawable.changbin);
+        hero = new SuperHero("Hyunjin", R.drawable.hyunjin);
         listSuperHero.add(hero);
         hero = new SuperHero("Felix", R.drawable.felix);
         listSuperHero.add(hero);
-        hero = new SuperHero("Han", R.drawable.han);
+        hero = new SuperHero("IN", R.drawable.in);
         listSuperHero.add(hero);
-        
 
         SuperHeroAdapter superHeroAdapter = new SuperHeroAdapter((ArrayList<SuperHero>) listSuperHero);
 
         rvSuperHero.setAdapter(superHeroAdapter);
-        rvSuperHero.setLayoutManager(new LinearLayoutManager(this));
+        rvSuperHero.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
     }
 }
