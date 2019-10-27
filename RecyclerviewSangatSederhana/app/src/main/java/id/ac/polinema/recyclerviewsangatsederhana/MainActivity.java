@@ -1,10 +1,13 @@
 package id.ac.polinema.recyclerviewsangatsederhana;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,5 +40,40 @@ public class MainActivity extends AppCompatActivity {
 
         rvSuperHero.setAdapter(superHeroAdapter);
         rvSuperHero.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        setMode(item.getItemId());
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void showRecyclerList(){
+        rvSuperHero.setLayoutManager(new LinearLayoutManager(this));
+        SuperHeroAdapter listHeroAdapter = new SuperHeroAdapter((ArrayList<SuperHero>) listSuperHero);
+        rvSuperHero.setAdapter(listHeroAdapter);
+    }
+
+    private void showRecyclerGrid(){
+        rvSuperHero.setLayoutManager(new GridLayoutManager(this, 2));
+        SuperHeroAdapter listHeroAdapter = new SuperHeroAdapter((ArrayList<SuperHero>) listSuperHero);
+        rvSuperHero.setAdapter(listHeroAdapter);
+    }
+
+    public void setMode(int selectedMode){
+        switch (selectedMode){
+            case R.id.action_list:
+                showRecyclerList();
+                break;
+            case R.id.action_grid:
+                showRecyclerGrid();
+                break;
+        }
     }
 }
